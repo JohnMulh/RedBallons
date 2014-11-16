@@ -22,19 +22,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-// set up each balloon instance in myBalloons
-  
-        for currentIndex; currentIndex <= 99; currentIndex++
-        {
-/* create an instance of Balloon and insert number using currentIndex
-and get one of four random images by calling the assignImage function
-which will return one */
-        var aBalloon = Balloon()
-        var gotImage = aBalloon.assignImage()
-        aBalloon.image = UIImage(named: "\(gotImage)")
-        aBalloon.number = currentIndex
-// add the instance to the myBalloons array
-            myBalloons.append(aBalloon)}
+        
+        self.populateArray()
 
     }
 
@@ -59,6 +48,24 @@ which will return one */
         self.LabelName.text = " The number of this item is \(balloon.number)"
         self.myImageView.image = balloon.image
     
+    }
+    
+    func populateArray ()
+    {
+        // set up each balloon instance in myBalloons
+        
+        for currentIndex; currentIndex <= 99; currentIndex++
+        {
+            /* create an instance of Balloon and insert number using currentIndex
+            and get one of four random images by calling the assignImage function
+            which will return one */
+            var aBalloon = Balloon()
+            var gotImage = aBalloon.assignImage()
+            aBalloon.image = UIImage(named: "\(gotImage)")
+            aBalloon.number = currentIndex
+            // add the instance to the myBalloons array
+            myBalloons.append(aBalloon)}
+
     }
 
 }
