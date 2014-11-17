@@ -10,18 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-// set up field to receive the balloons number
+// set up fields to receive the balloons number and the image to be used
     
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var LabelName: UILabel!
-// setup array to hold all balloon instances
+    
+// setup array to hold all Balloon instances
     
     var myBalloons:[Balloon] = []
     var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // populate the array
         
         self.populateArray()
 
@@ -34,6 +36,7 @@ class ViewController: UIViewController {
 
     @IBAction func nextBallonButtonPressed(sender: UIBarButtonItem) {
 // generate a random number from the count of items in the myBalloons array check that it is not the same as the previously generated random number and if so get another random number
+// use that to display the appropriate item from the array
         
         var randomIndex: Int
         
@@ -43,27 +46,27 @@ class ViewController: UIViewController {
         
         self.currentIndex = randomIndex
         
-        let balloon = myBalloons[self.currentIndex]
-        
-        self.LabelName.text = " The number of this item is \(balloon.number)"
-        self.myImageView.image = balloon.image
+        self.LabelName.text = " The number is: \(myBalloons[self.currentIndex].number)"
+        self.myImageView.image = myBalloons[self.currentIndex].image
     
     }
     
     func populateArray ()
     {
-        // set up each balloon instance in myBalloons
+// set up each balloon instance in myBalloons
         
         for currentIndex; currentIndex <= 99; currentIndex++
         {
-            /* create an instance of Balloon and insert number using currentIndex
-            and get one of four random images by calling the assignImage function
-            which will return one */
+/* create an instance of Balloon and insert number using currentIndex
+    then get one of four images by calling the assignImage function
+    which will return one randomly */
+            
             var aBalloon = Balloon()
-            var gotImage = aBalloon.assignImage()
-            aBalloon.image = UIImage(named: "\(gotImage)")
+            aBalloon.image = UIImage(named: "\(aBalloon.assignImage())")
             aBalloon.number = currentIndex
-            // add the instance to the myBalloons array
+            
+// add the instance to the myBalloons array
+            
             myBalloons.append(aBalloon)}
 
     }

@@ -15,11 +15,8 @@ struct Balloon {
     
     func assignImage () -> String
     {
-        var randomNumber = Int(arc4random_uniform(UInt32(5)))
+        var randomNumber = Int(arc4random_uniform(UInt32(4)))
         var randomImage: String
-        if randomNumber == 0 {
-            randomNumber = randomNumber + 1
-        }
         switch randomNumber {
         case 1:
             randomImage = "RedBalloon1.jpg"
@@ -27,10 +24,8 @@ struct Balloon {
             randomImage = "RedBalloon2.jpg"
         case 3:
             randomImage = "RedBalloon3.jpg"
-        case 4:
-            randomImage = "RedBalloon4.jpg"
         default:
-            randomImage = "BerlinTVTower.jpg"
+            randomImage = "RedBalloon4.jpg"
         }
         return randomImage
     }
